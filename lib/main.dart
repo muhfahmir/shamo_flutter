@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_apps/shared/theme.dart';
-import 'package:shamo_apps/ui/pages/chat/detail_chat_page.dart';
+import 'package:shamo_apps/ui/pages/detail_chat_page.dart';
+import 'package:shamo_apps/ui/pages/edit_profile_page.dart';
 import 'package:shamo_apps/ui/pages/home/main_page.dart';
 import 'package:shamo_apps/ui/pages/sign_in_page.dart';
 import 'package:shamo_apps/ui/pages/sign_up_page.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/sign-up': (context) => SignUpPage(),
         '/home': (context) => MainPage(),
         '/detail-chat': (context) => DetailChatpage(),
+        '/edit-profile': (context) => EditProfilePage(),
       },
     );
   }

@@ -31,11 +31,13 @@ class _MainPageState extends State<MainPage> {
         top: Radius.circular(30),
       ),
       child: BottomAppBar(
-        // color: backgroundColor4,
+        color: backgroundColor4,
+        // elevation: 0,
         shape: CircularNotchedRectangle(),
         notchMargin: 12,
         clipBehavior: Clip.antiAlias,
         child: BottomNavigationBar(
+          elevation: 0,
           backgroundColor: backgroundColor4,
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
@@ -113,7 +115,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor1,
+      backgroundColor: currentIndex == 0 ? backgroundColor1 : backgroundColor3,
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: customBottomNav(),
