@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo_apps/providers/auth_provider.dart';
+import 'package:shamo_apps/providers/cart_provider.dart';
 import 'package:shamo_apps/providers/product_provider.dart';
+import 'package:shamo_apps/providers/transaction_provider.dart';
+import 'package:shamo_apps/providers/wishlist_provider.dart';
 import 'package:shamo_apps/shared/theme.dart';
 import 'package:shamo_apps/ui/pages/cart_page.dart';
 import 'package:shamo_apps/ui/pages/checkout_page.dart';
@@ -28,6 +31,15 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WishListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
         ),
       ],
       child: MaterialApp(
