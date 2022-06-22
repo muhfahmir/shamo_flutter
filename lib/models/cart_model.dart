@@ -27,6 +27,6 @@ class CartModel {
 
   // total harga
   double getTotalPrice() {
-    return product.price * quantity;
+    return product.price! * quantity;
   }
 }

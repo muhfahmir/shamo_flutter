@@ -30,7 +30,7 @@ class AuthService {
     );
 
     // print('auth service run');
-    print(response.body);
+    // print(response.body);
 
     if (response.statusCode == 200) {
       // print('auth service success1');

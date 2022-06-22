@@ -7,6 +7,7 @@ import 'package:shamo_apps/models/product_model.dart';
 import 'package:shamo_apps/providers/cart_provider.dart';
 import 'package:shamo_apps/providers/wishlist_provider.dart';
 import 'package:shamo_apps/shared/theme.dart';
+import 'package:shamo_apps/ui/pages/detail_chat_page.dart';
 
 class ProductPage extends StatefulWidget {
   final ProductModel product;
@@ -181,7 +182,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
           CarouselSlider(
-            items: widget.product.galleries
+            items: widget.product.galleries!
                 .map(
                   (image) => Image.network(
                     image.url,
@@ -204,7 +205,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.product.galleries.map((e) {
+            children: widget.product.galleries!.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -248,7 +249,7 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ),
                         Text(
-                          widget.product.category.name,
+                          widget.product.category!.name,
                           style: secondaryTextStyle.copyWith(
                             fontSize: 12,
                           ),
@@ -392,7 +393,14 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail-chat');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailChatpage(
+                            product: widget.product,
+                          ),
+                        ),
+                      );
                     },
                     child: Container(
                       width: 54,

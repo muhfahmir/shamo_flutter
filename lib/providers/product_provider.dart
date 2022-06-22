@@ -17,7 +17,8 @@ class ProductProvider with ChangeNotifier {
       List<ProductModel> products = await ProductService().getProducts();
       _products = products;
     } catch (e) {
-      print(e);
+      // print(e);
+      throw Exception('Gagal get products');
     }
   }
 }

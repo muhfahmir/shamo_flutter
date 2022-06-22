@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo_apps/providers/cart_provider.dart';
+import 'package:shamo_apps/providers/page_provider.dart';
 import 'package:shamo_apps/shared/theme.dart';
 import 'package:shamo_apps/ui/widgets/cart_card.dart';
 
@@ -10,6 +11,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
 
     PreferredSizeWidget header() {
       return AppBar(
@@ -64,8 +66,7 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/home', (route) => false);
+                  pageProvider.currentIndex = 0;
                 },
                 child: Text(
                   'Explore Store',

@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:shamo_apps/models/message_model.dart';
+import 'package:shamo_apps/models/product_model.dart';
 import 'package:shamo_apps/shared/theme.dart';
+import 'package:shamo_apps/ui/pages/detail_chat_page.dart';
 
 class ChatTile extends StatelessWidget {
-  const ChatTile({Key? key}) : super(key: key);
+  final MessageModel? message;
+  const ChatTile({Key? key, this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-chat');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailChatpage(
+              product: UninitializedProductModel(),
+            ),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(top: 33),
@@ -16,9 +28,11 @@ class ChatTile extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(
-                  'assets/image_shop_logo.png',
-                  width: 54,
+                ClipOval(
+                  child: Image.network(
+                    message!.userImage,
+                    width: 54,
+                  ),
                 ),
                 SizedBox(
                   width: 12,
@@ -28,13 +42,13 @@ class ChatTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Shoe Store',
+                        message!.username,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                         ),
                       ),
                       Text(
-                        'Good night, This item is on... ',
+                        message!.message,
                         style: secondaryTextStyle.copyWith(
                           fontWeight: light,
                         ),
@@ -44,7 +58,7 @@ class ChatTile extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Now',
+                  DateFormat('dd-MM-yyyy').format(message!.updatedAt),
                   style: secondaryTextStyle.copyWith(
                     fontSize: 10,
                   ),

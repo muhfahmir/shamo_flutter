@@ -34,7 +34,7 @@ class AuthProvider with ChangeNotifier {
       return true;
     } catch (e) {
       // print('authprovider error');
-      print(e);
+      // print(e);
       return false;
     }
   }
@@ -57,7 +57,7 @@ class AuthProvider with ChangeNotifier {
       return true;
     } catch (e) {
       // print('authprovider error');
-      print(e);
+      // print(e);
       return false;
     }
   }
